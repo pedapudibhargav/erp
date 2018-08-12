@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ export class NavigationComponent implements OnInit {
 
   clicked: boolean;
 
-  constructor() {
+  constructor(
+    private authService: AuthService) {
     this.clicked = this.clicked === undefined ? false : true;
   }
 
@@ -20,6 +22,10 @@ export class NavigationComponent implements OnInit {
 
   setClicked(val: boolean): void {
     this.clicked = val;
+  }
+
+  logout(){
+    this.authService.sessionLogout();
   }
 
 }

@@ -2,7 +2,7 @@
 <header>
 
     <!-- Sidebar -->
-    <div class="sidebar-fixed position-fixed">
+    <div class="sidebar-fixed position-fixed" *ngIf="authService.isMerchantLoggedIn()">
 
         <a class="logo-wrapper waves-effect">
             <img src="../../../../assets/img/angular-mdb.png" class="img-fluid" alt="">
@@ -10,7 +10,7 @@
 
         <div class="list-group list-group-flush">
 
-            <a routerLink="dashboards/v1" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+            <a routerLink="mer-dashboard" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
                 <i class="fa fa-pie-chart mr-3"></i>Dashboard
             </a>
             <a routerLink="profiles/profile1" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
@@ -62,7 +62,7 @@
             <!-- Search form -->
             <ul class="navbar-nav nav-flex-icons">
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank" mdbWavesEffect>
                             <i class="fa fa-facebook"></i>
                         </a>
@@ -71,16 +71,23 @@
                         <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank" mdbWavesEffect>
                             <i class="fa fa-twitter"></i>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light"
-                            target="_blank" mdbWavesEffect>
-                            <i class="fa fa-github mr-2"></i>MDB GitHub
+                    </li> -->
+                    <li class="nav-item" *ngIf="!authService.isMerchantOrCustomerLoggedIn()">
+                        <a routerLink="login" routerLinkActive="active" class="ml-1 nav-link border border-light rounded" mdbWavesEffect>
+                                    <!-- <i class="fa fa-github mr-2"></i> -->
+                                    Log In
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="https://mdbootstrap.com/product/angular-bootstrap-pro/" class="ml-1 nav-link border border-light rounded" mdbWavesEffect>
-                        <i class="fa fa-diamond left"></i> Go Pro</a>
+                    <li class="nav-item" *ngIf="authService.isMerchantOrCustomerLoggedIn()" >
+                            <a routerLink="login" (click)="logout()" routerLinkActive="active" class="ml-1 nav-link border border-light rounded" mdbWavesEffect>
+                                        <!-- <i class="fa fa-github mr-2"></i> -->
+                                        Log Out
+                            </a>
+                        </li>
+                    <li class="nav-item" *ngIf="!authService.isMerchantOrCustomerLoggedIn()">
+                        <a routerLink="signup" routerLinkActive="active" class="ml-1 nav-link border border-light rounded" mdbWavesEffect>
+                        <!-- <i class="fa fa-diamond left"></i>  -->
+                        Sign Up</a>
                     </li>
                 </ul>
         </links>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'mdb-root',
@@ -27,12 +28,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private location: Location
+    private location: Location,
+    private authService: AuthService
   ) {
 
     this.router.events.subscribe((route:any) => {
       this.currentUrl = route.url;
-
       this.specialPage = this.specialPages.indexOf(this.currentUrl) !== -1;
     });
 

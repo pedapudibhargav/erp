@@ -9,15 +9,12 @@ import { NotFoundComponent } from './views/errors/not-found/not-found.component'
 import { Dashboard1Component } from './views/dashboards/dashboard1/dashboard1.component';
 import { LoginComponent } from './views/login/login.component';
 import { SignupComponent } from './views/signup/signup.component';
+import { AuthGuardService } from './services/auth/auth-guard.service';
 
 
 const routes: Route[] = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboards/v1' },
-  { path: 'dashboards', children:
-    [
-      { path: 'v1', component: Dashboard1Component },
-    ]
-  },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: 'mer-dashboard' , component : Dashboard1Component, canActivate : [AuthGuardService]},
   { path: 'profiles', children:
     [
       { path: 'profile1', component: Profile1Component },

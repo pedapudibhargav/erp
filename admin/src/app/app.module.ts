@@ -13,6 +13,8 @@ import { ErrorModule } from './views/errors/error.module';
 
 // main layout
 import { NavigationModule } from './main-layout/navigation/navigation.module';
+import { AuthService } from './services/auth/auth.service';
+import { AuthGuardService } from './services/auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { NavigationModule } from './main-layout/navigation/navigation.module';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
 })

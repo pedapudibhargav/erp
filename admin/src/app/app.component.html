@@ -1,11 +1,11 @@
 
-<!-- <app-navigation></app-navigation> -->
+<app-navigation [class.noSideNav]="!authService.isMerchantLoggedIn()"></app-navigation>
 
-<!-- <main [ngClass]="{'py-0 px-0 my-0 mx-0': specialPage}"  class="mx-lg-5" > -->
-  <main>    
+<main [ngClass]="{'py-0 px-0 my-0 mx-0': specialPage}"  [class.noSideNav]="!authService.isMerchantLoggedIn()"  class="mx-lg-5" >
+  <!-- <main>     -->
   <div >
     <router-outlet></router-outlet>
   </div>
 </main>
 
-<app-footer></app-footer>
+<app-footer [class.noSideNav]="!authService.isMerchantLoggedIn()"></app-footer>
