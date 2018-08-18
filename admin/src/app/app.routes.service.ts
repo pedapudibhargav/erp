@@ -10,11 +10,18 @@ import { Dashboard1Component } from './views/dashboards/dashboard1/dashboard1.co
 import { LoginComponent } from './views/login/login.component';
 import { SignupComponent } from './views/signup/signup.component';
 import { AuthGuardService } from './services/auth/auth-guard.service';
+import { CustomersTabComponent } from './views/customers-tab/customers-tab.component';
+import { TransactionsComponent } from './views/transactions/transactions.component';
+import { MerchCustomerPanelComponent } from './views/merch-customer-panel/merch-customer-panel.component';
 
 
 const routes: Route[] = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: 'mer-dashboard' , component : Dashboard1Component, canActivate : [AuthGuardService]},
+  // { path: 'mer-dashboard' , component : Dashboard1Component, canActivate : [AuthGuardService]},
+  { path: 'mer-dashboard' , component : Dashboard1Component},
+  { path: 'customers-tab' , component : CustomersTabComponent},
+  { path: 'transactions' , component : TransactionsComponent},
+  { path: 'merc-customer-tab' , component : MerchCustomerPanelComponent},
   { path: 'profiles', children:
     [
       { path: 'profile1', component: Profile1Component },

@@ -2,7 +2,8 @@
 <header>
 
     <!-- Sidebar -->
-    <div class="sidebar-fixed position-fixed" *ngIf="authService.isMerchantLoggedIn()">
+    <!-- <div class="sidebar-fixed position-fixed" *ngIf="authService.isMerchantLoggedIn()"> -->
+    <div class="sidebar-fixed position-fixed">     
 
         <a class="logo-wrapper waves-effect">
             <img src="../../../../assets/img/angular-mdb.png" class="img-fluid" alt="">
@@ -13,10 +14,12 @@
             <a routerLink="mer-dashboard" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
                 <i class="fa fa-pie-chart mr-3"></i>Dashboard
             </a>
-            <a routerLink="profiles/profile1" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
-                <i class="fa fa-user mr-3"></i>Profile</a>
-            <a routerLink="tables/table1" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
-                <i class="fa fa-table mr-3"></i>Tables</a>
+            <a routerLink="customers-tab" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-user mr-3"></i>Customers</a>
+            <a routerLink="merc-customer-tab" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-address-card-o mr-3"></i>Customer Panel</a>    
+            <a routerLink="transactions" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-table mr-3"></i>Transaction</a>
             <a routerLink="maps/map1" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
                 <i class="fa fa-map mr-3"></i>Maps</a>
             <a routerLink="nonExistingPath" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
@@ -73,13 +76,13 @@
                         </a>
                     </li> -->
                     <li class="nav-item" *ngIf="!authService.isMerchantOrCustomerLoggedIn()">
-                        <a routerLink="login" routerLinkActive="active" class="ml-1 nav-link border border-light rounded" mdbWavesEffect>
+                        <a routerLink="login" routerLinkActive="active" class="ml-1 nav-link " mdbWavesEffect>
                                     <!-- <i class="fa fa-github mr-2"></i> -->
                                     Log In
                         </a>
                     </li>
                     <li class="nav-item" *ngIf="authService.isMerchantOrCustomerLoggedIn()" >
-                            <a routerLink="login" (click)="logout()" routerLinkActive="active" class="ml-1 nav-link border border-light rounded" mdbWavesEffect>
+                            <a routerLink="login" (click)="logout()" routerLinkActive="active" class="ml-1 nav-link" mdbWavesEffect>
                                         <!-- <i class="fa fa-github mr-2"></i> -->
                                         Log Out
                             </a>

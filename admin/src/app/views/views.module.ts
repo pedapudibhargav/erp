@@ -29,6 +29,9 @@ import { Profile1Component } from './profile/profile1/profile1.component';
 import { HelpComponent } from './help/help.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { CustomersTabComponent } from './customers-tab/customers-tab.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { MerchCustomerPanelComponent } from './merch-customer-panel/merch-customer-panel.component';
 
 
 @NgModule({
@@ -65,6 +68,9 @@ import { SignupComponent } from './signup/signup.component';
     HelpComponent,
     LoginComponent,
     SignupComponent,
+    CustomersTabComponent,
+    TransactionsComponent,
+    MerchCustomerPanelComponent,
 
   ],
   exports: [

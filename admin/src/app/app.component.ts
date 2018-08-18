@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from './services/auth/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'mdb-root',
@@ -40,6 +41,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    firebase.initializeApp({
+      apiKey: "AIzaSyA0xvLMX5qHe2wQEU0qmsuYUpSIzaPQGWQ",
+      authDomain: "erp-software-cfde2.firebaseapp.com",
+    });
   }
 
   goBack(): void {

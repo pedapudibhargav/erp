@@ -1,15 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit{
 
   merchantLoggedInFlag : boolean = false;
   customerLoggedInFlag: boolean = false;
+
   constructor(private router : Router) { }
 
+  ngOnInit(){
+
+  }
   authMerchantLogin(username:string, password: string){
     console.log("authMerchant service:" + username + "," +password);
     if(username == "admin" && password == "pass")
@@ -23,27 +28,31 @@ export class AuthService {
   }
 
   sessionLogout(){
-    if(this.merchantLoggedInFlag)
-    {
-      this.merchantLoggedInFlag = false;
+      this.merchantLoggedInFlag = !this.merchantLoggedInFlag;
       console.log("Merchant logged out");
       return this.merchantLoggedInFlag;
-    }else if(this.customerLoggedInFlag){
-      this.customerLoggedInFlag = false;
-      return this.customerLoggedInFlag;
-    }
-    else{
-      console.error("No session found");
-    }
   }
 
   authCustomerLogin(username:string, password: string){
-    if(username == "adminc" && password == "passc")
-    {
-      return true;
-    }
-    return false;
+    firebase.auth().signInWithEmailAndPassword(username,password)
+    .then(
+      res =>{
+        this.customerLoggedInFlag = true;
+      }
+    )
+    .catch(
+      err =>{
+        console.log(err);
+      }
+    )
+
   }
+
+  customerSessionLogout(){
+    this.customerLoggedInFlag = !this.customerLoggedInFlag;
+    return this.customerLoggedInFlag;
+  }
+
 
   isMerchantLoggedIn(){
     return this.merchantLoggedInFlag;
@@ -59,4 +68,15 @@ export class AuthService {
     return false;
   }
 
+  createNewCustomerUser(email: string, password: string){
+    firebase.auth().createUserWithEmailAndPassword(email,password)
+      .then(
+        res => {
+          alert("User created");
+        }
+      )
+      .catch(
+        error => console.log(error)
+      );
+  }
 }

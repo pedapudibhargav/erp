@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes.service';
-
 import { ViewsModule } from './views/views.module';
 import { SharedModule } from './shared/shared.module';
 import { ErrorModule } from './views/errors/error.module';
