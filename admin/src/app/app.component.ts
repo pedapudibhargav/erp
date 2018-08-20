@@ -44,6 +44,10 @@ export class AppComponent implements OnInit {
     firebase.initializeApp({
       apiKey: "AIzaSyA0xvLMX5qHe2wQEU0qmsuYUpSIzaPQGWQ",
       authDomain: "erp-software-cfde2.firebaseapp.com",
+      databaseURL: "https://erp-software-cfde2.firebaseio.com",
+      projectId: "erp-software-cfde2",
+      storageBucket: "erp-software-cfde2.appspot.com",
+      messagingSenderId: "442380366292"
     });
   }
 

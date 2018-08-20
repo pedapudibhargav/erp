@@ -14,6 +14,7 @@ import { ErrorModule } from './views/errors/error.module';
 import { NavigationModule } from './main-layout/navigation/navigation.module';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
+import { CustomerInfoService } from './services/customer-info.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { AuthGuardService } from './services/auth/auth-guard.service';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, CustomerInfoService],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
 })

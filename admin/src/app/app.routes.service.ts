@@ -16,12 +16,12 @@ import { MerchCustomerPanelComponent } from './views/merch-customer-panel/merch-
 
 
 const routes: Route[] = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'mer-dashboard' },
   // { path: 'mer-dashboard' , component : Dashboard1Component, canActivate : [AuthGuardService]},
   { path: 'mer-dashboard' , component : Dashboard1Component},
   { path: 'customers-tab' , component : CustomersTabComponent},
   { path: 'transactions' , component : TransactionsComponent},
-  { path: 'merc-customer-tab' , component : MerchCustomerPanelComponent},
+  { path: 'merc-customer-tab' , component : MerchCustomerPanelComponent, canActivate : [AuthGuardService]},
   { path: 'profiles', children:
     [
       { path: 'profile1', component: Profile1Component },

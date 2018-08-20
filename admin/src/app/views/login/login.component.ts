@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { NgForm } from '../../../../node_modules/@angular/forms';
+import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -9,16 +11,21 @@ import { NgForm } from '../../../../node_modules/@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService, private router : Router) { }
 
+  
   onMerchantLogin(formIn : NgForm){
     console.log(formIn);
-    if(!this.authService.authMerchantLogin(formIn.value.username,formIn.value.password)){
-      alert("Invalid Username or password " + formIn.value.username + "," + formIn.value.password);
-    }
-    else{
-      console.log("Login Success:" + formIn.value.username + "," + formIn.value.password);
-    }
+    this.authService.authMerchantLogin(formIn.value.username,formIn.value.password)
+        .then(resp => {
+                this.authService.merchantLoggedInFlag = true;
+                console.log("Login Success:" + formIn.value.username + "," + formIn.value.password);
+                this.router.navigate(['/mer-dashboard']);
+        })
+        .catch(err => {
+            alert("Invalid Username or password " + formIn.value.username + "," + formIn.value.password);
+            this.authService.merchantLoggedInFlag = false;
+        });
   }
 
   ngOnInit() {

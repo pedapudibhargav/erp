@@ -13,18 +13,18 @@ export class AuthService implements OnInit{
   constructor(private router : Router) { }
 
   ngOnInit(){
-
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        this.merchantLoggedInFlag = true;
+        console.log("found user");
+      }
+      else{
+        console.log("User not found");
+      }
+    });
   }
   authMerchantLogin(username:string, password: string){
-    console.log("authMerchant service:" + username + "," +password);
-    if(username == "admin" && password == "pass")
-    {
-      this.merchantLoggedInFlag = true;
-      this.router.navigate(['/mer-dashboard']);
-      return this.merchantLoggedInFlag;
-    }
-    this.merchantLoggedInFlag = false;
-    return this.merchantLoggedInFlag;
+        return firebase.auth().signInWithEmailAndPassword(username, password);
   }
 
   sessionLogout(){
