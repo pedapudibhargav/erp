@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import * as firestore from 'firebase/firestore';
 import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,15 @@ import { NgForm } from '@angular/forms';
 export class CustomerInfoService {
   private db = firebase.firestore();
 
-  constructor() { 
+  constructor(private http: HttpClient) { 
     const settings = {/* your settings... */ timestampsInSnapshots: true};
     this.db.settings(settings);
   }
 
   getCustomersList(){
    console.log("from service");
-   return this.db.collection("customer");
+
+   return this.http.get('http://localhost:8888/laravel/public/customer');
   }
 
   createNewCustomer(formIn : NgForm){

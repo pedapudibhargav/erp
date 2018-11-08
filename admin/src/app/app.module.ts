@@ -15,6 +15,7 @@ import { NavigationModule } from './main-layout/navigation/navigation.module';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { CustomerInfoService } from './services/customer-info.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CustomerInfoService } from './services/customer-info.service';
     ViewsModule,
     ErrorModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [AuthService, AuthGuardService, CustomerInfoService],
   bootstrap: [AppComponent],

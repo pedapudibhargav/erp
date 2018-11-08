@@ -15,19 +15,16 @@ export class CustomersTabComponent implements OnInit {
    }
 
   getCustomers(){
-    this.customerInfoServ.getCustomersList().get()
-    .then(querySnapshot => {
-      this.customers = [];
-      querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-          this.customers.push(doc.data());
-          console.log(this.customers);
+    this.customerInfoServ.getCustomersList()
+    .subscribe(
+      data => {
+        console.log("We got", data);
       });
-    })
-    .catch(e => console.log(e));;
   }
+  createNewCustomer(){
 
+  }
+  
   onCustomerSignUp(f:NgForm){
     if(f.form.valid)
       this.customerInfoServ.createNewCustomer(f);
