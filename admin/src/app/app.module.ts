@@ -16,6 +16,7 @@ import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { CustomerInfoService } from './services/customer-info.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiUrl } from './models/api-url';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuardService, CustomerInfoService],
+  providers: [AuthService, AuthGuardService, CustomerInfoService,ApiUrl],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
 })

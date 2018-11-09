@@ -13,6 +13,7 @@ import { AuthGuardService } from './services/auth/auth-guard.service';
 import { CustomersTabComponent } from './views/customers-tab/customers-tab.component';
 import { TransactionsComponent } from './views/transactions/transactions.component';
 import { MerchCustomerPanelComponent } from './views/merch-customer-panel/merch-customer-panel.component';
+import { NewCustomerComponent } from './views/customers-tab/new-customer/new-customer.component';
 
 
 const routes: Route[] = [
@@ -20,6 +21,7 @@ const routes: Route[] = [
   // { path: 'mer-dashboard' , component : Dashboard1Component, canActivate : [AuthGuardService]},
   { path: 'mer-dashboard' , component : Dashboard1Component},
   { path: 'customers-tab' , component : CustomersTabComponent},
+  { path: 'new-customer', component: NewCustomerComponent },
   { path: 'transactions' , component : TransactionsComponent},
   { path: 'merc-customer-tab' , component : MerchCustomerPanelComponent, canActivate : [AuthGuardService]},
   { path: 'profiles', children:

@@ -32,6 +32,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CustomersTabComponent } from './customers-tab/customers-tab.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { MerchCustomerPanelComponent } from './merch-customer-panel/merch-customer-panel.component';
+import { NewCustomerComponent } from './customers-tab/new-customer/new-customer.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { MerchCustomerPanelComponent } from './merch-customer-panel/merch-custom
     CustomersTabComponent,
     TransactionsComponent,
     MerchCustomerPanelComponent,
+    NewCustomerComponent,
 
   ],
   exports: [

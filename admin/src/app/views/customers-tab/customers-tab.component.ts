@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerInfoService } from '../../services/customer-info.service';
 import { NgForm } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-customers-tab',
@@ -11,7 +12,7 @@ export class CustomersTabComponent implements OnInit {
 
   customers = [];
 
-  constructor(private customerInfoServ: CustomerInfoService) {
+  constructor(private customerInfoServ: CustomerInfoService, private router: Router) {
    }
 
   getCustomers(){
@@ -22,16 +23,7 @@ export class CustomersTabComponent implements OnInit {
       });
   }
   createNewCustomer(){
-
-  }
-  
-  onCustomerSignUp(f:NgForm){
-    if(f.form.valid)
-      this.customerInfoServ.createNewCustomer(f);
-    else{
-      console.error("Invalid form");
-      console.log(f.form.valid);
-    }  
+    this.router.navigateByUrl('/new-customer');
   }
 
   ngOnInit() {
