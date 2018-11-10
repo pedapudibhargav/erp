@@ -1,0 +1,27 @@
+<div class="container new-customer-container">
+  <div class="row">
+    <form id="newcustomer-form" (ngSubmit)="onProductCreation(f)" #f="ngForm">
+      <div class="form-row">
+          <div class="form-group col-md-12">
+              <input type="text" required class="form-control" id="name-input-id" placeholder="Product Name*" name="name" ngModel>
+          </div>
+          <div class="form-group col-md-12">
+              <input type="text" required class="form-control" id="sku-input" placeholder="SKU*" name="sku" ngModel>
+          </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <input type="text" class="form-control" id="weight-input" placeholder="Weight*" name="weight" ngModel>
+          </div>
+          <div class="form-group col-md-6">
+              <input type="text" class="form-control" id="quantity" placeholder="Units of Measurement*" name="unit" ngModel>
+          </div>
+      </div>
+     <div class="form-row">
+        <div class="form-group col-md-12">
+            <button type="submit" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect> Submit</button>
+        </div>
+     </div>
+    </form>
+  </div>
+</div>

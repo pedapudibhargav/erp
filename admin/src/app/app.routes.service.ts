@@ -14,16 +14,21 @@ import { CustomersTabComponent } from './views/customers-tab/customers-tab.compo
 import { TransactionsComponent } from './views/transactions/transactions.component';
 import { MerchCustomerPanelComponent } from './views/merch-customer-panel/merch-customer-panel.component';
 import { NewCustomerComponent } from './views/customers-tab/new-customer/new-customer.component';
+import { ProductsComponent } from './views/products/products.component';
+import { NewProductComponent } from './views/products/new-product/new-product.component';
 
 
 const routes: Route[] = [
   { path: '', pathMatch: 'full', redirectTo: 'mer-dashboard' },
   // { path: 'mer-dashboard' , component : Dashboard1Component, canActivate : [AuthGuardService]},
   { path: 'mer-dashboard' , component : Dashboard1Component},
-  { path: 'customers-tab' , component : CustomersTabComponent},
+  { path: 'customers' , component : CustomersTabComponent},
   { path: 'new-customer', component: NewCustomerComponent },
+  { path: 'products' , component : ProductsComponent},
+  { path: 'new-product' , component : NewProductComponent},
   { path: 'transactions' , component : TransactionsComponent},
   { path: 'merc-customer-tab' , component : MerchCustomerPanelComponent, canActivate : [AuthGuardService]},
+
   { path: 'profiles', children:
     [
       { path: 'profile1', component: Profile1Component },

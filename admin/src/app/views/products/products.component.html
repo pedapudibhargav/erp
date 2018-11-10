@@ -1,0 +1,31 @@
+<div class="container products-container">
+  <div class="row">        
+    <div class="container custs-tab-ctr">
+      <div class="row">
+          <div class="btn btn-primary" (click)="getProducts()">
+              Get Products
+          </div>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="createNewProduct()" mdbWavesEffect>Create New Customer</button> 
+      </div>
+      <div class="row" style="margin-top:20px">
+          <table class="table table-striped">
+              <thead class="thead-dark">
+                  <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">SKU</th>
+                      <th scope="col">Unit</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor='let productIn of products'>
+                      <td>{{productIn.name}}</td>
+                      <td>{{productIn.sku}}</td>
+                      <td>{{productIn.unit}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    
+    </div>
+  </div>
+</div>
