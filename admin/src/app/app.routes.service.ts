@@ -16,6 +16,9 @@ import { MerchCustomerPanelComponent } from './views/merch-customer-panel/merch-
 import { NewCustomerComponent } from './views/customers-tab/new-customer/new-customer.component';
 import { ProductsComponent } from './views/products/products.component';
 import { NewProductComponent } from './views/products/new-product/new-product.component';
+import { PurchasesComponent } from './views/purchases/purchases.component';
+import { SalesComponent } from './views/sales/sales.component';
+import { SupplierComponent } from './views/supplier/supplier.component';
 
 
 const routes: Route[] = [
@@ -26,6 +29,9 @@ const routes: Route[] = [
   { path: 'new-customer', component: NewCustomerComponent },
   { path: 'products' , component : ProductsComponent},
   { path: 'new-product' , component : NewProductComponent},
+  { path: 'purchases' , component : PurchasesComponent},
+  { path: 'sales' , component : SalesComponent},
+  { path: 'suppliers' , component : SupplierComponent},
   { path: 'transactions' , component : TransactionsComponent},
   { path: 'merc-customer-tab' , component : MerchCustomerPanelComponent, canActivate : [AuthGuardService]},
 

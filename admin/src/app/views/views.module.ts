@@ -35,6 +35,9 @@ import { MerchCustomerPanelComponent } from './merch-customer-panel/merch-custom
 import { NewCustomerComponent } from './customers-tab/new-customer/new-customer.component';
 import { ProductsComponent } from './products/products.component';
 import { NewProductComponent } from './products/new-product/new-product.component';
+import { PurchasesComponent } from './purchases/purchases.component';
+import { SalesComponent } from './sales/sales.component';
+import { SupplierComponent } from './supplier/supplier.component';
 
 
 @NgModule({
@@ -77,6 +80,9 @@ import { NewProductComponent } from './products/new-product/new-product.componen
     NewCustomerComponent,
     ProductsComponent,
     NewProductComponent,
+    PurchasesComponent,
+    SalesComponent,
+    SupplierComponent,
 
   ],
   exports: [

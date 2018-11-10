@@ -10,14 +10,10 @@ import { Product } from 'app/models/product';
 })
 export class ProductsComponent implements OnInit {
 
-  products = [
-    {
-      name:"dummy1",
-      sku:"sku1",
-      unit:"Kg"
-    }
-  ];
-  constructor(private router: Router, private prodductServ: ProductsService) { }
+  products = [];
+  constructor(private router: Router, private prodductServ: ProductsService) { 
+    this.getProducts();
+  }
 
   ngOnInit() {
   }

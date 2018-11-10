@@ -9,7 +9,6 @@ import { NgForm } from '@angular/forms';
 export class ProductsService {
 
   constructor(private http: HttpClient, private apiDef: ApiUrl) { 
-
   }
 
   getProductsList(){
