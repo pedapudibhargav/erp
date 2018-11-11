@@ -1,3 +1,17 @@
-<p>
-  supplier works!
-</p>
+<div class="container supplier-container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/suppliers/all-supplier" routerLinkActive="active" >All Suppliers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/suppliers/new-supplier" routerLinkActive="active" >New Supplier</a>
+        </li>
+      </ul>
+
+      <div class="row">
+        <div class="col-12">
+            <router-outlet>
+            </router-outlet>
+        </div>
+      </div>
+</div>

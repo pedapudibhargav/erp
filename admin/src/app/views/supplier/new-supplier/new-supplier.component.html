@@ -1,0 +1,53 @@
+<div class="container new-supplier-container">
+    <div class="row">
+      <form id="newsupplier-form" (ngSubmit)="onSupplierCreation(f)" #f="ngForm">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input type="text" required class="form-control" id="supplier-name-input-id" placeholder="Supplier Name*" name="name" ngModel>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input type="text" required class="form-control" placeholder="Address Line 1*" name="address_line_1" ngModel>
+            </div>
+            <div class="form-group col-md-12">
+                <input type="text"  class="form-control" placeholder="Address Line 2*" name="address_line_2" ngModel>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <input type="text" required class="form-control" placeholder="City*" name="city" ngModel>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" required class="form-control" placeholder="State" name="state" ngModel>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" required class="form-control" placeholder="Pincode" name="pincode" ngModel>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input type="text" required class="form-control" id="primary-contact-name" placeholder="Primary Contact Name*" name="contact_person_primary" ngModel>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input type="text"  class="form-control" id="secondary-contact-name" placeholder="Secondary Contact Name*" name="contact_person_secondary" ngModel>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input type="text" required class="form-control" id="primary-contact-input" placeholder="Primary Contact Number*" name="phone_primary" ngModel>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="secondary-contact-input" placeholder="Secondary Contact Number*" name="phone_secondary" ngModel>
+            </div>
+        </div>
+       <div class="form-row">
+          <div class="form-group col-md-12">
+              <button type="submit" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect> Submit</button>
+          </div>
+       </div>
+      </form>
+    </div>
+  </div>

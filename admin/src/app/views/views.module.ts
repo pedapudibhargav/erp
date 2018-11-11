@@ -38,6 +38,8 @@ import { NewProductComponent } from './products/new-product/new-product.componen
 import { PurchasesComponent } from './purchases/purchases.component';
 import { SalesComponent } from './sales/sales.component';
 import { SupplierComponent } from './supplier/supplier.component';
+import { NewSupplierComponent } from './supplier/new-supplier/new-supplier.component';
+import { AllSuppliersComponent } from './supplier/all-suppliers/all-suppliers.component';
 
 
 @NgModule({
@@ -83,6 +85,8 @@ import { SupplierComponent } from './supplier/supplier.component';
     PurchasesComponent,
     SalesComponent,
     SupplierComponent,
+    NewSupplierComponent,
+    AllSuppliersComponent,
 
   ],
   exports: [

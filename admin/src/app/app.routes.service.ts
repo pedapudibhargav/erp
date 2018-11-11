@@ -19,6 +19,8 @@ import { NewProductComponent } from './views/products/new-product/new-product.co
 import { PurchasesComponent } from './views/purchases/purchases.component';
 import { SalesComponent } from './views/sales/sales.component';
 import { SupplierComponent } from './views/supplier/supplier.component';
+import { NewSupplierComponent } from './views/supplier/new-supplier/new-supplier.component';
+import { AllSuppliersComponent } from './views/supplier/all-suppliers/all-suppliers.component';
 
 
 const routes: Route[] = [
@@ -31,7 +33,12 @@ const routes: Route[] = [
   { path: 'new-product' , component : NewProductComponent},
   { path: 'purchases' , component : PurchasesComponent},
   { path: 'sales' , component : SalesComponent},
-  { path: 'suppliers' , component : SupplierComponent},
+  { path: 'suppliers' , component : SupplierComponent, children:
+    [
+      { path: 'new-supplier', component: NewSupplierComponent },
+      { path: 'all-supplier', component: AllSuppliersComponent },
+    ]
+  },
   { path: 'transactions' , component : TransactionsComponent},
   { path: 'merc-customer-tab' , component : MerchCustomerPanelComponent, canActivate : [AuthGuardService]},
 

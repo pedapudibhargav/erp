@@ -1,0 +1,11 @@
+.supplier-container{
+    background-color: #fff;
+    margin-bottom: -22px;
+    padding:40px;
+    .nav-link{
+        color: #007bff;
+        &.active{
+            color: #6c757d;
+        }
+    }
+}
