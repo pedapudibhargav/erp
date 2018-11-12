@@ -40,6 +40,8 @@ import { SalesComponent } from './sales/sales.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { NewSupplierComponent } from './supplier/new-supplier/new-supplier.component';
 import { AllSuppliersComponent } from './supplier/all-suppliers/all-suppliers.component';
+import { AllPurchasesComponent } from './purchases/all-purchases/all-purchases.component';
+import { NewPurchaseComponent } from './purchases/new-purchase/new-purchase.component';
 
 
 @NgModule({
@@ -87,6 +89,8 @@ import { AllSuppliersComponent } from './supplier/all-suppliers/all-suppliers.co
     SupplierComponent,
     NewSupplierComponent,
     AllSuppliersComponent,
+    AllPurchasesComponent,
+    NewPurchaseComponent,
 
   ],
   exports: [

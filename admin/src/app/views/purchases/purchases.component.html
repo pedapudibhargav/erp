@@ -1,3 +1,17 @@
-<p>
-  purchases works!
-</p>
+<div class="container purchases-container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/purchases/all-purchases" routerLinkActive="active" >All Purchases</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/purchases/new-purchase" routerLinkActive="active" >New Purchase</a>
+        </li>
+      </ul>
+
+      <div class="row">
+        <div class="col-12">
+            <router-outlet>
+            </router-outlet>
+        </div>
+      </div>
+</div>

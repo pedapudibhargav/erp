@@ -21,6 +21,8 @@ import { SalesComponent } from './views/sales/sales.component';
 import { SupplierComponent } from './views/supplier/supplier.component';
 import { NewSupplierComponent } from './views/supplier/new-supplier/new-supplier.component';
 import { AllSuppliersComponent } from './views/supplier/all-suppliers/all-suppliers.component';
+import { AllPurchasesComponent } from './views/purchases/all-purchases/all-purchases.component';
+import { NewPurchaseComponent } from './views/purchases/new-purchase/new-purchase.component';
 
 
 const routes: Route[] = [
@@ -37,6 +39,12 @@ const routes: Route[] = [
     [
       { path: 'new-supplier', component: NewSupplierComponent },
       { path: 'all-supplier', component: AllSuppliersComponent },
+    ]
+  },
+  { path: 'purchases' , component : PurchasesComponent, children:
+    [
+      { path: 'new-purchase', component: NewPurchaseComponent },
+      { path: 'all-purchases', component: AllPurchasesComponent },
     ]
   },
   { path: 'transactions' , component : TransactionsComponent},
