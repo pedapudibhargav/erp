@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductsService } from 'app/services/products.service';
+import { LocalstorageConverterService } from 'app/services/localstorage-converter.service';
 
 @Component({
   selector: 'app-new-product',
@@ -9,20 +10,32 @@ import { ProductsService } from 'app/services/products.service';
 })
 export class NewProductComponent implements OnInit {
 
-  constructor(private prodApi: ProductsService) { }
+  constructor(private prodApi: ProductsService, private localStorageConverter : LocalstorageConverterService) { }
 
   ngOnInit() {
   }
 
   onProductCreation(f:NgForm){
     if(f.form.valid){
-      this.prodApi.createProduct(f)
-        .subscribe( (response) => {
-          console.log("Response:",response);
-        },
-        (error)=>{
-          console.log("Error:", error);
-        });
+      // this.prodApi.createProduct(f)
+      //   .subscribe( (response) => {
+      //     console.log("Response:",response);
+      //   },
+      //   (error)=>{
+      //     console.log("Error:", error);
+      //   });
+
+
+      console.log("FormIn:", f.form.value);
+      var newProductIn = f.form.value;
+      if(localStorage.getItem("products") === null){
+        this.localStorageConverter.setJsonObjectToKey("products",[]);
+      }
+      let productsFromStorage: [any] =  this.localStorageConverter.getJsonObjectByKey("products");
+      newProductIn["id"] = productsFromStorage.length;
+      productsFromStorage.push(newProductIn);
+      console.log("FinalProductList:",productsFromStorage);
+      this.localStorageConverter.setJsonObjectToKey("products",productsFromStorage);
     }
     else{
       console.error("Invalid form");
