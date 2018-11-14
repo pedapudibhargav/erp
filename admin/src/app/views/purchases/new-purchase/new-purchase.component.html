@@ -1,3 +1,47 @@
-<p>
-  new-purchase works!
-</p>
+<div class="container new-pruchase-container">
+  <div class="row">
+    <form (ngSubmit)="onPurchaseCreation(f)" #f="ngForm">
+      <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="">Supplier Name</label>
+                <select class="browser-default custom-select" name="supplier_id" ngModel>
+                    <option selected value="">-</option>
+                    <option *ngFor='let supplier of suppliers' [value]="supplier.id" >
+                        {{supplier.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="">Current Gold Price per gram</label>
+                <input type="text" required class="form-control" placeholder="00.00" name="purchase_time_gold_value" ngModel>                       
+            </div>
+      </div>
+      <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="">Total Weight of Transaction</label>
+                <input type="text" required class="form-control" placeholder="00.00" name="total_weight" ngModel>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="">Payement Type</label>
+                <select class="browser-default custom-select" name="payment_type" ngModel>
+                    <option selected value="">-</option>
+                    <option *ngFor='let typeIn of paymentTypes' [value]="typeIn.value" >
+                        {{typeIn.name}}
+                    </option>
+                </select>                
+            </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-6">
+                <label for="">Wastage</label><br/>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >92 +/-</span>
+                    </div>
+                    <input type="text" name="wastage" ngModel class="form-control" placeholder="2 or -2" aria-label="wastage">
+                </div>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PurchasesService } from 'app/services/purchases.service';
 import { Purchase } from 'app/models/purchase';
+import { LocalstorageConverterService } from 'app/services/localstorage-converter.service';
 
 @Component({
   selector: 'app-all-purchases',
@@ -13,23 +14,35 @@ export class AllPurchasesComponent implements OnInit {
     id: "1",
     supplier_id: "S1" ,
     depreciation: "3",
-    payment_type: "100% spot payment",
-    last_date_of_payement: "last date of payment",
-    total_weight: "1000grams",
-    total: "200000",
-    pending_balance: "1000"
+    purchase_date: "",
+    purchase_time: "",
+    purchase_time_gold_price: "",
+    total_weight: "1102",
+    total_payment: "100999",
+    payment_type: "100% down",
+    pending_cash_balance: "2345",
+    pending_weight_balance: "23",
   }];
-  constructor(private purchasesService: PurchasesService) { }
+  constructor(private purchasesService: PurchasesService, private localStorageConverter : LocalstorageConverterService) {
+    this.getAllPurchases();
+   }
 
   ngOnInit() {
   }
 
   getAllPurchases(){
-    this.purchasesService.getPurchases().subscribe(
-      (data:Purchase[]) => {
-        this.purchases = data;
-        console.log("We got", data);
-      });
+    // this.purchasesService.getPurchases().subscribe(
+    //   (data:Purchase[]) => {
+    //     this.purchases = data;
+    //     console.log("We got", data);
+    //   });
+    if(localStorage.getItem("purchases") !== null){
+      this.purchases = this.localStorageConverter.getJsonObjectByKey("purchases");
+    }
+    else{
+      console.log("Empty:purchases");
+    }
+
   }
 
 }

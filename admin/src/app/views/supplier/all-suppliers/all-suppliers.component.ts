@@ -12,13 +12,13 @@ export class AllSuppliersComponent implements OnInit {
 
   suppliers = [];
   constructor(private supplierApi : SupplierService, private localStorageConverter : LocalstorageConverterService) {
-    this.getProducts();
+    this.getAllSuppliers();
    }
 
   ngOnInit() {
   }
 
-  getProducts(){
+  getAllSuppliers(){
     // this.supplierApi.getAllSuppliers().subscribe(
     //   (data:Supplier[]) => {
     //     this.suppliers = data;

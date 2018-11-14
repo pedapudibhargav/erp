@@ -4,20 +4,20 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Supplier ID</th>
-                <th scope="col">Depreciation</th>
                 <th scope="col">Payment Type</th>
-                <th scope="col">Total</th>
-                <th scope="col">Pending Balance</th>
+                <th scope="col">Total Weight</th>
+                <th scope="col">Pending Cash Balance</th>
+                <th scope="col">Pending Weight Balance</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor='let purchase of purchases'>
                 <td>{{purchase.id}}</td>
                 <td>{{purchase.supplier_id}}</td>
-                <td>{{purchase.depreciation}}</td>
                 <td>{{purchase.payment_type}}</td>
-                <td>{{purchase.total}}</td>
-                <td>{{purchase.pending_balance}}</td>
+                <td>{{purchase.total_weight}}</td>
+                <td>{{purchase.pending_cash_balance}}</td>
+                <td>{{purchase.pending_weight_balance}}</td>
             </tr>
         </tbody>
     </table>
