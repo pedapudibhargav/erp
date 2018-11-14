@@ -1,20 +1,22 @@
-<h4>Unit Search</h4>
-
-<div class="row" style="margin-top:20px">
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Contact Person</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- <tr *ngFor='let supplier of suppliers'>
-                <td>{{supplier.name}}</td>
-                <td>{{supplier.phone_primary}}</td>
-                <td>{{supplier.contact_person_primary}}</td>
-            </tr> -->
-        </tbody>
-    </table>
+<div class="container unit-search-container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Unit Id</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let unitIn of productUnits'>
+                    <td>{{unitIn.id}}</td>
+                    <td>{{unitIn.model_id}}</td>
+                    <td>{{unitIn.weight}}</td>
+                    <td>{{unitIn.status}}</td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
 </div>

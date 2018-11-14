@@ -3,16 +3,22 @@
       <table class="table table-striped">
           <thead class="thead-dark">
               <tr>
+                  <th scope="col">Id</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Phone</th>
-                  <th scope="col">Contact Person</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Tools</th>
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor='let supplier of suppliers'>
-                  <td>{{supplier.name}}</td>
-                  <td>{{supplier.phone_primary}}</td>
-                  <td>{{supplier.contact_person_primary}}</td>
+              <tr *ngFor='let product of products'>
+                  <td>{{product.id}}</td>
+                  <td>{{product.name}}</td>
+                  <td>{{product.category}}</td>
+                  <td>
+                      <a >
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                      </a>
+                  </td>
               </tr>
           </tbody>
       </table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalstorageConverterService } from 'app/services/localstorage-converter.service';
 
 @Component({
   selector: 'app-products-search',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products-search.component.scss']
 })
 export class ProductsSearchComponent implements OnInit {
+  products = [];
 
-  constructor() { }
+  constructor(private localStorageConverter : LocalstorageConverterService) { }
 
   ngOnInit() {
+    this.getAllProducts();
+  }
+
+  getAllProducts(){
+    if(localStorage.getItem("products") !== null){
+      this.products = this.localStorageConverter.getJsonObjectByKey("products");
+    }
+    else{
+      console.log("Empty:products");
+    }
   }
 
 }
