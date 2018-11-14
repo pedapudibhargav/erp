@@ -1,4 +1,4 @@
-<div class="container products-container">
+<!-- <div class="container products-container">
   <div class="row">        
     <div class="container custs-tab-ctr">
       <div class="row">
@@ -28,4 +28,28 @@
     
     </div>
   </div>
+</div> -->
+
+<div class="container products-container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/products/products-search" routerLinkActive="active" >Product Search</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  routerLink="/products/product-unit-search" routerLinkActive="active" >Single Unit Search</a>
+          </li>        
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/products/create-new-product" routerLinkActive="active" >Add New Product</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  routerLink="/products/add-new-product-unit" routerLinkActive="active" >Add New Product Unit</a>
+        </li>        
+      </ul>
+
+      <div class="row">
+        <div class="col-12">
+            <router-outlet>
+            </router-outlet>
+        </div>
+      </div>
 </div>

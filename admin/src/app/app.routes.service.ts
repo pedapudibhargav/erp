@@ -23,6 +23,9 @@ import { NewSupplierComponent } from './views/supplier/new-supplier/new-supplier
 import { AllSuppliersComponent } from './views/supplier/all-suppliers/all-suppliers.component';
 import { AllPurchasesComponent } from './views/purchases/all-purchases/all-purchases.component';
 import { NewPurchaseComponent } from './views/purchases/new-purchase/new-purchase.component';
+import { ProductsSearchComponent } from './views/products/products-search/products-search.component';
+import { NewProductUnitComponent } from './views/products/new-product-unit/new-product-unit.component';
+import { UnitSearchComponent } from './views/products/unit-search/unit-search.component';
 
 
 const routes: Route[] = [
@@ -31,7 +34,14 @@ const routes: Route[] = [
   { path: 'mer-dashboard' , component : Dashboard1Component},
   { path: 'customers' , component : CustomersTabComponent},
   { path: 'new-customer', component: NewCustomerComponent },
-  { path: 'products' , component : ProductsComponent},
+  { path: 'products' , component : ProductsComponent, children:
+    [
+      { path: 'products-search', component: ProductsSearchComponent },
+      { path: 'product-unit-search', component: UnitSearchComponent },
+      { path: 'create-new-product', component:  NewProductComponent},
+      { path: 'add-new-product-unit', component: NewProductUnitComponent },
+    ]
+  },
   { path: 'new-product' , component : NewProductComponent},
   { path: 'purchases' , component : PurchasesComponent},
   { path: 'sales' , component : SalesComponent},

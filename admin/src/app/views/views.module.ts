@@ -42,6 +42,9 @@ import { NewSupplierComponent } from './supplier/new-supplier/new-supplier.compo
 import { AllSuppliersComponent } from './supplier/all-suppliers/all-suppliers.component';
 import { AllPurchasesComponent } from './purchases/all-purchases/all-purchases.component';
 import { NewPurchaseComponent } from './purchases/new-purchase/new-purchase.component';
+import { ProductsSearchComponent } from './products/products-search/products-search.component';
+import { NewProductUnitComponent } from './products/new-product-unit/new-product-unit.component';
+import { UnitSearchComponent } from './products/unit-search/unit-search.component';
 
 
 @NgModule({
@@ -91,6 +94,9 @@ import { NewPurchaseComponent } from './purchases/new-purchase/new-purchase.comp
     AllSuppliersComponent,
     AllPurchasesComponent,
     NewPurchaseComponent,
+    ProductsSearchComponent,
+    NewProductUnitComponent,
+    UnitSearchComponent,
 
   ],
   exports: [

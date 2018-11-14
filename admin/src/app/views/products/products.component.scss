@@ -2,4 +2,10 @@
     background-color: white;
     padding: 30px;
     margin-bottom: -22px;
+    .nav-link{
+        color: #007bff;
+        &.active{
+            color: #6c757d;
+        }
+    }   
 }
