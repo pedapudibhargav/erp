@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalstorageConverterService } from 'app/services/localstorage-converter.service';
 import { DefaultVariablesService } from 'app/services/default-variables.service';
 import { ProductUnit } from 'app/models/product-unit';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-new-purchase',
@@ -72,5 +73,12 @@ export class NewPurchaseComponent implements OnInit {
         
         console.log("Units:", this.transactionModelObj.units );
       }
+   }
+
+   saveUnitsOfProduct(){
+      $(".new-product-unit-row").each(function(){
+        var productIdIn = $(this).find(".product_id").val();
+        console.log("ProductIdIn:" + productIdIn);
+      })
    }
 }
