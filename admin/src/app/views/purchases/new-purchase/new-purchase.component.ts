@@ -14,18 +14,16 @@ export class NewPurchaseComponent implements OnInit {
   paymentTypes = [];
   metalTypes = [];
   products = [];
-  transactionModelObj = {
+  transactionSingleProductObj = {
     id:"",
     name:"",
     units:[]
   };
-  finalTransactionArray = [
-    {
+  finalTransactionArray = {
       id:"",
-      name:"",
-      units:[]
-    }
-  ];
+      supplier_id:"",
+      products:[]
+    };
   product_selected_in_modal = "";
   constructor( private localStorageConverter : LocalstorageConverterService, private defaultVars: DefaultVariablesService) { }
 
@@ -64,21 +62,36 @@ export class NewPurchaseComponent implements OnInit {
         return;
       }
       if(e.target.value > 0){
-        this.transactionModelObj.units=[];
+        this.transactionSingleProductObj.units=[];
         
         for(var i=0; i < e.target.value; i ++){
           let newUnit = new ProductUnit(i+"", this.product_selected_in_modal,0);
-          this.transactionModelObj.units.push(newUnit);
+          this.transactionSingleProductObj.units.push(newUnit);
         }
         
-        console.log("Units:", this.transactionModelObj.units );
+        // console.log("Units:", this.transactionSingleProductObj.units );
       }
    }
 
    saveUnitsOfProduct(){
-      $(".new-product-unit-row").each(function(){
+      this.transactionSingleProductObj.units = this.getProductUnitsDataFromModal();
+      this.transactionSingleProductObj.id = $("#product_selected_in_modal").val()+"";
+      this.transactionSingleProductObj.name = $("#product_selected_in_modal option:selected").text();
+      var tmpObj = JSON.parse(JSON.stringify(this.transactionSingleProductObj));
+      console.log("transactionSingleProductObj:",tmpObj);
+      this.finalTransactionArray.products.push(JSON.parse(JSON.stringify(tmpObj)));
+      console.log("Transaction Array:", this.finalTransactionArray);
+   }
+
+   getProductUnitsDataFromModal(){
+      var unitsArray = [];
+      $(".new-product-unit-row").each(function(i){
         var productIdIn = $(this).find(".product_id").val();
-        console.log("ProductIdIn:" + productIdIn);
-      })
+        var productWeightIn = $(this).find(".product_unit_weight").val();
+        var productValue = $("#product_selected_in_modal").val();
+        unitsArray.push(new ProductUnit(productIdIn+"", productValue + "", Number(productWeightIn) ));
+      });
+      console.log("UnitsArray:", unitsArray);
+      return unitsArray;
    }
 }

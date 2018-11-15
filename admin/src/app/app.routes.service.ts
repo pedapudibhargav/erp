@@ -11,7 +11,6 @@ import { LoginComponent } from './views/login/login.component';
 import { SignupComponent } from './views/signup/signup.component';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { CustomersTabComponent } from './views/customers-tab/customers-tab.component';
-import { TransactionsComponent } from './views/transactions/transactions.component';
 import { MerchCustomerPanelComponent } from './views/merch-customer-panel/merch-customer-panel.component';
 import { NewCustomerComponent } from './views/customers-tab/new-customer/new-customer.component';
 import { ProductsComponent } from './views/products/products.component';
@@ -57,7 +56,6 @@ const routes: Route[] = [
       { path: 'all-purchases', component: AllPurchasesComponent },
     ]
   },
-  { path: 'transactions' , component : TransactionsComponent},
   { path: 'merc-customer-tab' , component : MerchCustomerPanelComponent, canActivate : [AuthGuardService]},
 
   { path: 'profiles', children:

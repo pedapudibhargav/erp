@@ -46,6 +46,30 @@
                 <div class="form-row">
                     <button type="button" mdbBtn color="primary" outline="true" class="relative waves-light" (click)="addProductUnits.show()" mdbWavesEffect>Add Product Units</button>
                 </div>
+
+                <div class="form-row">
+                    <table class="table table-striped" style="margin-top:20px;">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Product Id</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Number of Units bought</th>
+                                <th scope="col">-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let productInfo of finalTransactionArray.products'>
+                                <td>{{productInfo.id}}</td>
+                                <td>{{productInfo.name}}</td>
+                                <td>{{productInfo.units.length}}</td>
+                                <td> edit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-row text-center">
+                    <button mdbBtn type="button" size="lg" color="default" mdbWavesEffect style="margin: 10px auto;"> Save Transaction</button>
+                </div>
             </form>
         </div>
 
@@ -63,8 +87,8 @@
                             <form (ngSubmit)="onProductUnitsCreation(f)" #f="ngForm">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="">Select a Model</label>
-                                        <select class="browser-default custom-select" name="product_selected_in_modal" [(ngModel)] = "product_selected_in_modal">
+                                        <label for="">Select a Product</label>
+                                        <select class="browser-default custom-select" id="product_selected_in_modal" name="product_selected_in_modal" [(ngModel)] = "product_selected_in_modal">
                                             <option selected value="">-</option>
                                             <option *ngFor='let productIn of products' [value]="productIn.id">
                                                 {{productIn.name}}
@@ -78,7 +102,7 @@
                                 </div> 
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <div class="row new-product-unit-row" *ngFor='let transactionUnit of transactionModelObj.units'>
+                                        <div class="row new-product-unit-row" *ngFor='let transactionUnit of transactionSingleProductObj.units'>
                                             <div class="col-1">
                                                 <div class="md-form">
                                                     <label > 1.</label>
@@ -87,26 +111,28 @@
                                             <div class="col-6">
                                                 <div class="md-form">
                                                     <input mdbInputDirective type="text" class="form-control product_id">
-                                                    <label class="">Product Id (Optional)</label>
+                                                    <label class="">Unit Id (Optional)</label>
                                                 </div>
                                             </div>
                                             <div class="col-5">
                                                 <div class="md-form">
                                                     <input mdbInputDirective type="text" class="form-control product_unit_weight">
-                                                    <label class="">Weight in Grams</label>
+                                                    <label class="">Unit Weight Grams</label>
                                                 </div>
                                             </div>                      
                                         </div>
                                     </div>
                                 </div>
+                               <!-- 
                                 <div class="form-row">
                                     <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="saveUnitsOfProduct()" mdbWavesEffect>Save</button>
                                 </div>
+                                -->
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="addProductUnits.hide()" mdbWavesEffect>Close</button>
-                            <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
+                            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="saveUnitsOfProduct();addProductUnits.hide()" mdbWavesEffect>Save changes</button>
                         </div>
                     </div>
                 </div>
