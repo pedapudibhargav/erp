@@ -1,47 +1,115 @@
 <div class="container new-pruchase-container">
-  <div class="row">
-    <form (ngSubmit)="onPurchaseCreation(f)" #f="ngForm">
-      <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="">Supplier Name</label>
-                <select class="browser-default custom-select" name="supplier_id" ngModel>
-                    <option selected value="">-</option>
-                    <option *ngFor='let supplier of suppliers' [value]="supplier.id" >
-                        {{supplier.name}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="">Current Gold Price per gram</label>
-                <input type="text" required class="form-control" placeholder="00.00" name="purchase_time_gold_value" ngModel>                       
-            </div>
-      </div>
-      <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="">Total Weight of Transaction</label>
-                <input type="text" required class="form-control" placeholder="00.00" name="total_weight" ngModel>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="">Payement Type</label>
-                <select class="browser-default custom-select" name="payment_type" ngModel>
-                    <option selected value="">-</option>
-                    <option *ngFor='let typeIn of paymentTypes' [value]="typeIn.value" >
-                        {{typeIn.name}}
-                    </option>
-                </select>                
-            </div>
-      </div>
-      <div class="form-row">
-          <div class="form-group col-md-6">
-                <label for="">Wastage</label><br/>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" >92 +/-</span>
+        <div class="row">
+            <form (ngSubmit)="onPurchaseCreation(f)" #f="ngForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="">Supplier Name</label>
+                        <select class="browser-default custom-select" name="supplier_id" ngModel>
+                            <option selected value="">-</option>
+                            <option *ngFor='let supplier of suppliers' [value]="supplier.id">
+                                {{supplier.name}}
+                            </option>
+                        </select>
                     </div>
-                    <input type="text" name="wastage" ngModel class="form-control" placeholder="2 or -2" aria-label="wastage">
+                    <div class="form-group col-md-6">
+                        <label for="">Current Gold Price per gram</label>
+                        <input type="text" required class="form-control" placeholder="00.00" name="purchase_time_gold_value" ngModel>
+                    </div>
                 </div>
-          </div>
-      </div>
-    </form>
-  </div>
-</div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="">Total Weight of Transaction</label>
+                        <input type="text" required class="form-control" placeholder="00.00" name="total_weight" ngModel>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Payement Type</label>
+                        <select class="browser-default custom-select" name="payment_type" ngModel>
+                            <option selected value="">-</option>
+                            <option *ngFor='let typeIn of paymentTypes' [value]="typeIn.value">
+                                {{typeIn.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="">Wastage</label>
+                        <br/>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">92 +/-</span>
+                            </div>
+                            <input type="text" name="wastage" ngModel class="form-control" placeholder="2 or -2" aria-label="wastage">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button type="button" mdbBtn color="primary" outline="true" class="relative waves-light" (click)="addProductUnits.show()" mdbWavesEffect>Add Product Units</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <div mdbModal #addProductUnits="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myaddProductUnitsLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="addProductUnits.hide()">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title w-100" id="myModalLabel">Add new Product Units</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form (ngSubmit)="onProductUnitsCreation(f)" #f="ngForm">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="">Select a Model</label>
+                                        <select class="browser-default custom-select" name="product_selected_in_modal" [(ngModel)] = "product_selected_in_modal">
+                                            <option selected value="">-</option>
+                                            <option *ngFor='let productIn of products' [value]="productIn.id">
+                                                {{productIn.name}}
+                                            </option>
+                                        </select>
+                                    </div>                                    
+                                    <div class="form-group col-md-6">
+                                        <label for="">Number of units bought</label>
+                                        <input type="text" required class="form-control" placeholder="00" name="number_of_units_bought" (input)="updateProductUnitInputs($event)">
+                                    </div>
+                                </div> 
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <div class="row" *ngFor='let transactionUnit of transactionModelObj.units'>
+                                            <div class="col-1">
+                                                <div class="md-form">
+                                                    <label > 1.</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="md-form">
+                                                    <input mdbInputDirective type="text" class="form-control product_id">
+                                                    <label class="">Product Id (Optional)</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-5">
+                                                <div class="md-form">
+                                                    <input mdbInputDirective type="text" class="form-control product_unit_weight">
+                                                    <label class="">Weight in Grams</label>
+                                                </div>
+                                            </div>                      
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <button type="submit" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="addProductUnits.hide()" mdbWavesEffect>Close</button>
+                            <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
