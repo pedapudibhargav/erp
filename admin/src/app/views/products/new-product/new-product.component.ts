@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductsService } from 'app/services/products.service';
 import { LocalstorageConverterService } from 'app/services/localstorage-converter.service';
+import { DefaultVariablesService } from 'app/services/default-variables.service';
 
 @Component({
   selector: 'app-new-product',
@@ -9,10 +10,14 @@ import { LocalstorageConverterService } from 'app/services/localstorage-converte
   styleUrls: ['./new-product.component.scss']
 })
 export class NewProductComponent implements OnInit {
-
-  constructor(private prodApi: ProductsService, private localStorageConverter : LocalstorageConverterService) { }
+  categories = [];
+  constructor(private prodApi: ProductsService, private localStorageConverter : LocalstorageConverterService, private variableService:  DefaultVariablesService) { }
 
   ngOnInit() {
+    this.getCategories();
+  }
+  getCategories(){
+    this.categories = this.variableService.getProductCategories();
   }
 
   onProductCreation(f:NgForm){

@@ -25,6 +25,8 @@ import { NewPurchaseComponent } from './views/purchases/new-purchase/new-purchas
 import { ProductsSearchComponent } from './views/products/products-search/products-search.component';
 import { NewProductUnitComponent } from './views/products/new-product-unit/new-product-unit.component';
 import { UnitSearchComponent } from './views/products/unit-search/unit-search.component';
+import { InstallmentsComponent } from './views/installments/installments.component';
+import { NewInstallmentComponent } from './views/installments/new-installment/new-installment.component';
 
 
 const routes: Route[] = [
@@ -50,6 +52,8 @@ const routes: Route[] = [
       { path: 'all-supplier', component: AllSuppliersComponent },
     ]
   },
+  { path: 'new-installment/:purchaseId', component: NewInstallmentComponent },
+  { path: 'installments' , component : InstallmentsComponent},  
   { path: 'purchases' , component : PurchasesComponent, children:
     [
       { path: 'new-purchase', component: NewPurchaseComponent },

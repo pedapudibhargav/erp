@@ -1,0 +1,26 @@
+<div class="container new-installment-container">
+  <div class="row">
+    <button mdbBtn type="button" color="primary" mdbWavesEffect (click)="backClicked()">
+        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>  Back
+    </button>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3>Installment Payment / {{paymentType}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <p>
+        <strong >Total Gold:</strong>
+        <span  class="grey-text">
+          {{purchaseObjIn.total_weight}} grams
+        </span>
+      </p>
+    </div>
+    <div class="col-6">
+      
+    </div>
+  </div>
+</div>

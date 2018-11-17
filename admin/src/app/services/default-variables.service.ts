@@ -79,4 +79,14 @@ export class DefaultVariablesService {
   getPaymentTypes(){
     return this.paymentTypes;
   }
+
+  getPaymentTypeByValue(valueIn:string){
+    for(var i=0; i < this.paymentTypes.length; i++){
+      if(this.paymentTypes[i].value == valueIn){
+        return this.paymentTypes[i].name;
+      }
+    }
+    return "";
+  }
+
 }

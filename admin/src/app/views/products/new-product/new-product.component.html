@@ -9,9 +9,7 @@
         <div class="form-group col-md-6">
             <label >Category</label>
             <select required class="form-control" name="category" ngModel>
-                <option value="ring">Ring</option>
-                <option value="chain">Chain</option>
-                <option value="necklace">Necklace</option>
+                <option   *ngFor='let category of categories' [value]="category.value">{{category.name}}</option>
             </select>
         </div>
       </div>

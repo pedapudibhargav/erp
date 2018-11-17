@@ -10,19 +10,7 @@ import { LocalstorageConverterService } from 'app/services/localstorage-converte
 })
 export class AllPurchasesComponent implements OnInit {
 
-  purchases = [{
-    id: "1",
-    supplier_id: "S1" ,
-    depreciation: "3",
-    purchase_date: "",
-    purchase_time: "",
-    purchase_time_gold_price: "",
-    total_weight: "1102",
-    total_payment: "100999",
-    payment_type: "100% down",
-    pending_cash_balance: "2345",
-    pending_weight_balance: "23",
-  }];
+  purchases = [];
   constructor(private purchasesService: PurchasesService, private localStorageConverter : LocalstorageConverterService) {
     this.getAllPurchases();
    }

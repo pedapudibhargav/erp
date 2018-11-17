@@ -8,6 +8,7 @@
                 <th scope="col">Total Weight</th>
                 <th scope="col">Pending Cash Balance</th>
                 <th scope="col">Pending Weight Balance</th>
+                <th>-</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +19,8 @@
                 <td>{{purchase.total_weight}}</td>
                 <td>{{purchase.pending_cash_balance}}</td>
                 <td>{{purchase.pending_weight_balance}}</td>
+                <td><a routerLink="/new-installment/{{purchase.id}}" routerLinkActive="active" style="color:#007bff">Payment/Details</a></td>
             </tr>
         </tbody>
     </table>
-</div>
+</div> 

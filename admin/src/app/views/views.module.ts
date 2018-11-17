@@ -44,6 +44,8 @@ import { NewPurchaseComponent } from './purchases/new-purchase/new-purchase.comp
 import { ProductsSearchComponent } from './products/products-search/products-search.component';
 import { NewProductUnitComponent } from './products/new-product-unit/new-product-unit.component';
 import { UnitSearchComponent } from './products/unit-search/unit-search.component';
+import { InstallmentsComponent } from './installments/installments.component';
+import { NewInstallmentComponent } from './installments/new-installment/new-installment.component';
 
 
 @NgModule({
@@ -95,6 +97,8 @@ import { UnitSearchComponent } from './products/unit-search/unit-search.componen
     ProductsSearchComponent,
     NewProductUnitComponent,
     UnitSearchComponent,
+    InstallmentsComponent,
+    NewInstallmentComponent,
 
   ],
   exports: [

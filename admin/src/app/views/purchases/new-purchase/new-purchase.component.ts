@@ -3,6 +3,8 @@ import { LocalstorageConverterService } from 'app/services/localstorage-converte
 import { DefaultVariablesService } from 'app/services/default-variables.service';
 import { ProductUnit } from 'app/models/product-unit';
 import * as $ from 'jquery';
+import { NgForm } from '@angular/forms';
+import { Purchase } from 'app/models/purchase';
 
 @Component({
   selector: 'app-new-purchase',
@@ -93,5 +95,40 @@ export class NewPurchaseComponent implements OnInit {
       });
       console.log("UnitsArray:", unitsArray);
       return unitsArray;
+   }
+
+   onPurchaseCreation(f:NgForm){
+    if(f.form.valid){
+      console.log("FormIn:", f.form.value);
+      var formObj = f.form.value;
+      var finalPurchaseRecord = new Purchase( 
+        formObj.supplier_id,
+        formObj.wastage,
+        formObj.payment_type,
+        formObj.purchasetime_gold_value,
+        formObj.last_date_of_payement,
+        formObj.total_weight,
+        formObj.total_cash,
+        formObj.pending_cash_balance,
+        formObj.pending_weight_balance,
+        formObj.paid_cash,
+        formObj.prducts_list 
+       );
+
+       finalPurchaseRecord.prducts_list = this.finalTransactionArray.products;
+
+       if(localStorage.getItem("purchases") === null){
+          this.localStorageConverter.setJsonObjectToKey("purchases",[]);
+       }
+      let purchasesFromStorage: [any] =  this.localStorageConverter.getJsonObjectByKey("purchases");
+      purchasesFromStorage.push(finalPurchaseRecord);
+      console.log("FinalProductList:",purchasesFromStorage);
+      this.localStorageConverter.setJsonObjectToKey("purchases",purchasesFromStorage);
+
+    }
+    else{
+      alert("Please fill all the fields");
+      console.log(f.form.valid);
+    }
    }
 }

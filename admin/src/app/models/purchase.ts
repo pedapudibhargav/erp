@@ -2,31 +2,44 @@ export class Purchase {
 
     public id: string;
     public supplier_id: string;
-    public depreciation: string;
+    public wastage: string;
     public payment_type: string;
-    public last_date_of_payement: string;
+    public purchase_date_and_time: Date;
+    public purchasetime_gold_value: number;
+    public last_date_of_payement: Date;
     public total_weight: string;
-    public total: string;
-    public pending_balance: string;
+    public total_cash: number;
+    public pending_cash_balance: number;
+    public pending_weight_balance: number;
+    public paid_cash: number;
+    public prducts_list: any[]    
 
     constructor(
-         id: string,
-         supplier_id: string,
-         depreciation: string,
-         payment_type: string,
-         last_date_of_payement: string,
-         total_weight: string,
-         total: string,
-         pending_balance: string
+       supplier_id: string,
+       wastage: string,
+       payment_type: string,
+       purchasetime_gold_value: number,
+       last_date_of_payement: Date,
+       total_weight: string,
+       total_cash: number,
+       pending_cash_balance: number,
+       pending_weight_balance: number,
+       paid_cash: number,
+       prducts_list: any[]    
     ){
-        this.id= id;
-        this.supplier_id= supplier_id; 
-        this.depreciation= depreciation;
+        this.id= "p1";
+        this.supplier_id = supplier_id
+        this.wastage = wastage
         this.payment_type = payment_type;
-        this.last_date_of_payement = last_date_of_payement;
-        this.total_weight=  total_weight;
-        this.total = total ;
-        this.pending_balance = pending_balance;
+        this.purchase_date_and_time = new Date();
+        this.purchasetime_gold_value = purchasetime_gold_value;
+        this.last_date_of_payement= last_date_of_payement;
+        this.total_weight= total_weight
+        this.total_cash= total_cash
+        this.pending_cash_balance = pending_cash_balance;
+        this.pending_weight_balance = pending_weight_balance;
+        this.paid_cash = paid_cash ;
+        this.prducts_list = prducts_list;
     }
 
 }

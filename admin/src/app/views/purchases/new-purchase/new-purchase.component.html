@@ -1,10 +1,10 @@
 <div class="container new-pruchase-container">
         <div class="row">
-            <form (ngSubmit)="onPurchaseCreation(f)" #f="ngForm">
+            <form (ngSubmit)="onPurchaseCreation(formOne)" #formOne="ngForm">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="">Supplier Name</label>
-                        <select class="browser-default custom-select" name="supplier_id" ngModel>
+                        <select class="browser-default custom-select" required name="supplier_id" ngModel>
                             <option selected value="">-</option>
                             <option *ngFor='let supplier of suppliers' [value]="supplier.id">
                                 {{supplier.name}}
@@ -13,17 +13,17 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="">Current Gold Price per gram</label>
-                        <input type="text" required class="form-control" placeholder="00.00" name="purchase_time_gold_value" ngModel>
+                        <input type="text" required class="form-control" placeholder="00.00" name="purchasetime_gold_value" ngModel>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="">Total Weight of Transaction</label>
+                        <label for="" required>Total Weight of Transaction</label>
                         <input type="text" required class="form-control" placeholder="00.00" name="total_weight" ngModel>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="">Payement Type</label>
-                        <select class="browser-default custom-select" name="payment_type" ngModel>
+                        <select class="browser-default custom-select" required name="payment_type" ngModel>
                             <option selected value="">-</option>
                             <option *ngFor='let typeIn of paymentTypes' [value]="typeIn.value">
                                 {{typeIn.name}}
@@ -39,7 +39,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">92 +/-</span>
                             </div>
-                            <input type="text" name="wastage" ngModel class="form-control" placeholder="2 or -2" aria-label="wastage">
+                            <input type="text" name="wastage" ngModel required class="form-control" placeholder="2 or -2" aria-label="wastage">
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     </table>
                 </div>
                 <div class="form-row text-center">
-                    <button mdbBtn type="button" size="lg" color="default" mdbWavesEffect style="margin: 10px auto;"> Save Transaction</button>
+                    <button mdbBtn type="submit" size="lg" color="default" mdbWavesEffect style="margin: 10px auto;"> Save Transaction</button>
                 </div>
             </form>
         </div>
