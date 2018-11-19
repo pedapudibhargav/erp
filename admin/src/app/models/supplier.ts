@@ -1,4 +1,7 @@
+import { LocalstorageConverterService } from "app/services/localstorage-converter.service";
+
 export class Supplier {
+    public id:string;
     public name: string;
     public phone_primary: string;
     public phone_secondary: string;
@@ -9,6 +12,7 @@ export class Supplier {
     public city: string;
     public state: string;
     public pincode: string;
+    private localstorageServ : LocalstorageConverterService;
 
     constructor(name: string, 
         phone_primary: string,  
@@ -21,6 +25,7 @@ export class Supplier {
         state: string,
         pincode: string
     ){
+        this.id = "sup"+this.localstorageServ.getJsonObjectByKey("suppliers").length;
         this.phone_primary = phone_primary;
         this.phone_secondary =  phone_secondary; 
         this.contact_person_primary = contact_person_primary ;

@@ -15,6 +15,9 @@ export class NewInstallmentComponent implements OnInit {
   purchaseId = "";
   purchaseObjIn:Purchase;
   paymentType:string;
+  productModelsOfPurchase:any[];
+  productUnitsOfPurchase:any[];
+  installmentsOfPurchase:any[];
 
   constructor(private location : Location, private route: ActivatedRoute, private localStorageConverter : LocalstorageConverterService, private defaultVariableService: DefaultVariablesService) { 
     this.route.params.subscribe(params => {
@@ -22,6 +25,14 @@ export class NewInstallmentComponent implements OnInit {
       this.purchaseId = params.purchaseId;
       this.getPaymentById(this.purchaseId);
       this.paymentType = this.defaultVariableService.getPaymentTypeByValue(this.purchaseObjIn.payment_type);
+      this.productModelsOfPurchase = this.purchaseObjIn.prducts_list;
+      this.productUnitsOfPurchase = [];
+      for(var i=0; i < this.productModelsOfPurchase.length; i++ ){
+        console.log("Lengths:" + this.productModelsOfPurchase[i].units.length);\
+        for(var j=0; j < this.productModelsOfPurchase[i].units.length ; j++){
+          this.productUnitsOfPurchase.push(this.productModelsOfPurchase[i].units[j]);
+        }
+      }
     });
     
   }

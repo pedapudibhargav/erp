@@ -19,4 +19,8 @@ export class SupplierService {
     let postUrl = this.apiDef.api + '/suppliers';
     return this.http.post(postUrl,formIn.form.value);   
    }
+
+   getSupplierById(idIn:string){
+       
+   }
 }

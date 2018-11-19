@@ -10,17 +10,124 @@
       <h3>Installment Payment / {{paymentType}}</h3>
     </div>
   </div>
+  <br>
   <div class="row">
     <div class="col-6">
       <p>
-        <strong >Total Gold:</strong>
+        <strong >Supplier Id:</strong>
         <span  class="grey-text">
-          {{purchaseObjIn.total_weight}} grams
+          {{purchaseObjIn.supplier_id}}
         </span>
       </p>
     </div>
     <div class="col-6">
-      
+      <p>
+        <strong >Purchase Date/Time:</strong>
+        <span  class="grey-text">
+          {{purchaseObjIn.purchase_date_and_time}}
+        </span>
+      </p>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-6">
+      <p>
+        <strong >Total Gold Weight:</strong>
+        <span  class="grey-text">
+          {{purchaseObjIn.total_weight}} grms
+        </span>
+      </p>
+    </div>
+    <div class="col-6">
+      <p>
+        <strong >Wastage:</strong>
+        <span  class="grey-text">
+          {{purchaseObjIn.wastage}} %
+        </span>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <p>
+        <strong >Payment Type:</strong>
+        <span  class="grey-text">
+          {{purchaseObjIn.payment_type}}
+        </span>
+      </p>
+    </div>
+    <div class="col-6">
+      <p>
+        <strong >Gold Price During Purchase:</strong>
+        <span  class="grey-text">
+          {{purchaseObjIn.purchasetime_gold_value}}
+        </span>
+      </p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 text-center">
+      <p>
+        <strong>Product Units Details</strong>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <table class="table table-striped">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col">Unit ID</th>
+                  <th scope="col">Model ID</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">Status</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor='let unitIn of productUnitsOfPurchase'>
+                  <td>{{unitIn.id}}</td>
+                  <td>{{unitIn.model_id}}</td>
+                  <td>{{unitIn.weight}}</td>
+                  <td>{{unitIn.status}}</td>                
+              </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 text-center">
+      <p>
+        <strong>Installment Details</strong>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <table class="table table-striped">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col">Installment ID</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Amount</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor='let installmentIn of installmentsOfPurchase'>
+                  <td>{{installmentIn.id}}</td>
+                  <td>{{installmentIn.date}}</td>
+                  <td>{{installmentIn.amount}}</td>          
+              </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <button mdbBtn type="button" color="primary" mdbWavesEffect (click)="">
+          <i class="fa fa-long-arrow-left" aria-hidden="true"></i>  Add New Payment
+      </button>
     </div>
   </div>
 </div>
