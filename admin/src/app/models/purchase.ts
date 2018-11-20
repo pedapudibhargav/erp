@@ -7,7 +7,7 @@ export class Purchase {
     public purchase_date_and_time: Date;
     public purchasetime_gold_value: number;
     public last_date_of_payement: Date;
-    public total_weight: string;
+    public total_weight: number;
     public total_cash: number;
     public pending_cash_balance: number;
     public pending_weight_balance: number;
@@ -20,7 +20,7 @@ export class Purchase {
        payment_type: string,
        purchasetime_gold_value: number,
        last_date_of_payement: Date,
-       total_weight: string,
+       total_weight: number,
        total_cash: number,
        pending_cash_balance: number,
        pending_weight_balance: number,
