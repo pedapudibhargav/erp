@@ -67,7 +67,7 @@ export class NewPurchaseComponent implements OnInit {
         this.transactionSingleProductObj.units=[];
         
         for(var i=0; i < e.target.value; i ++){
-          let newUnit = new ProductUnit(i+"", this.product_selected_in_modal,0);
+          let newUnit = new ProductUnit("",this.product_selected_in_modal,0);
           this.transactionSingleProductObj.units.push(newUnit);
         }
         
@@ -77,6 +77,14 @@ export class NewPurchaseComponent implements OnInit {
 
    saveUnitsOfProduct(){
       this.transactionSingleProductObj.units = this.getProductUnitsDataFromModal();
+      var product_units_from_db = this.localStorageConverter.getJsonObjectByKey("product_units");
+      for(var i=0; i < this.transactionSingleProductObj.units.length ; i++){
+        var tmpUnitObj:ProductUnit = this.transactionSingleProductObj.units[i];
+        tmpUnitObj.id = "PUNIT" + product_units_from_db.length;
+        product_units_from_db.push(this.transactionSingleProductObj.units[i]);
+      }
+      this.localStorageConverter.setJsonObjectToKey("product_units", product_units_from_db);
+
       this.transactionSingleProductObj.id = $("#product_selected_in_modal").val()+"";
       this.transactionSingleProductObj.name = $("#product_selected_in_modal option:selected").text();
       var tmpObj = JSON.parse(JSON.stringify(this.transactionSingleProductObj));
@@ -87,12 +95,16 @@ export class NewPurchaseComponent implements OnInit {
 
    getProductUnitsDataFromModal(){
       var unitsArray = [];
+      var totalWeight = Number($("#total_weight").val());
+
       $(".new-product-unit-row").each(function(i){
         var productIdIn = $(this).find(".product_id").val();
         var productWeightIn = $(this).find(".product_unit_weight").val();
         var productValue = $("#product_selected_in_modal").val();
+        totalWeight = totalWeight + Number(productWeightIn);
         unitsArray.push(new ProductUnit(productIdIn+"", productValue + "", Number(productWeightIn) ));
       });
+      $("#total_weight").val(totalWeight);
       console.log("UnitsArray:", unitsArray);
       return unitsArray;
    }
@@ -107,7 +119,7 @@ export class NewPurchaseComponent implements OnInit {
         formObj.payment_type,
         formObj.purchasetime_gold_value,
         formObj.last_date_of_payement,
-        formObj.total_weight,
+        Number(Number($("#total_weight").val()).toFixed(2)),
         formObj.total_cash,
         formObj.pending_cash_balance,
         formObj.pending_weight_balance,
@@ -115,16 +127,16 @@ export class NewPurchaseComponent implements OnInit {
         formObj.prducts_list 
        );
 
-       finalPurchaseRecord.prducts_list = this.finalTransactionArray.products;
-
+       finalPurchaseRecord.prducts_list = this.finalTransactionArray.products;       
        if(localStorage.getItem("purchases") === null){
           this.localStorageConverter.setJsonObjectToKey("purchases",[]);
        }
+
       let purchasesFromStorage: [any] =  this.localStorageConverter.getJsonObjectByKey("purchases");
       purchasesFromStorage.push(finalPurchaseRecord);
       console.log("FinalProductList:",purchasesFromStorage);
       this.localStorageConverter.setJsonObjectToKey("purchases",purchasesFromStorage);
-
+       alert("Saved");
     }
     else{
       alert("Please fill all the fields");

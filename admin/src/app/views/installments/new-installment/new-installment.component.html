@@ -1,186 +1,193 @@
 <div class="container new-installment-container">
-  <div class="row">
-    <button mdbBtn type="button" color="primary" mdbWavesEffect (click)="backClicked()">
-        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>  Back
-    </button>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-12 text-center">
-      <h3>Installment Payment / {{paymentType}}</h3>
+    <div class="row">
+        <button mdbBtn type="button" color="primary" mdbWavesEffect (click)="backClicked()">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back
+        </button>
     </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-6">
-      <p>
-        <strong >Supplier Id:</strong>
-        <span  class="grey-text">
+    <br>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3>Installment Payment / {{paymentType}}</h3>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <p>
+                <strong>Supplier Id:</strong>
+                <span class="grey-text">
           {{purchaseObjIn.supplier_id}}
         </span>
-      </p>
-    </div>
-    <div class="col-6">
-      <p>
-        <strong >Purchase Date/Time:</strong>
-        <span  class="grey-text">
+            </p>
+        </div>
+        <div class="col-6">
+            <p>
+                <strong>Purchase Date/Time:</strong>
+                <span class="grey-text">
           {{purchaseObjIn.purchase_date_and_time}}
         </span>
-      </p>
+            </p>
+        </div>
     </div>
-  </div>  
-  <div class="row">
-    <div class="col-6">
-      <p>
-        <strong >Total Gold Weight:</strong>
-        <span  class="grey-text">
+    <div class="row">
+        <div class="col-6">
+            <p>
+                <strong>Total Gold Weight:</strong>
+                <span class="grey-text">
           {{purchaseObjIn.total_weight}} grms
         </span>
-      </p>
-    </div>
-    <div class="col-6">
-      <p>
-        <strong >Wastage:</strong>
-        <span  class="grey-text">
+            </p>
+        </div>
+        <div class="col-6">
+            <p>
+                <strong>Wastage:</strong>
+                <span class="grey-text">
           {{purchaseObjIn.wastage}} %
         </span>
-      </p>
+            </p>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <p>
-        <strong >Payment Type:</strong>
-        <span  class="grey-text">
+    <div class="row">
+        <div class="col-6">
+            <p>
+                <strong>Payment Type:</strong>
+                <span class="grey-text">
           {{purchaseObjIn.payment_type}}
         </span>
-      </p>
-    </div>
-    <div class="col-6">
-      <p>
-        <strong >Gold Price During Purchase:</strong>
-        <span  class="grey-text">
+            </p>
+        </div>
+        <div class="col-6">
+            <p>
+                <strong>Gold Price During Purchase:</strong>
+                <span class="grey-text">
           {{purchaseObjIn.purchasetime_gold_value}}
         </span>
-      </p>
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-6">
-        <p>
-          <strong >Total Cash Balace :</strong>
-          <span [className]=" purchaseObjIn.pending_cash_balance < 1 ? 'lead green-text' : 'lead red-text'">
-            {{purchaseObjIn.total_cash - purchaseObjIn.paid_cash}}
-          </span>
-        </p>
-      </div>
-      <div class="col-6">
-        <p>
-          <strong >Total Cash Paid:</strong>
-          <span  class="light-blue-text lead">
-            {{purchaseObjIn.paid_cash}}
-          </span>
-        </p>
-      </div>
-    </div>
-  <hr>
-  <div class="row">
-    <div class="col-12 text-center">
-      <p>
-        <strong>Product Units Details</strong>
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <table class="table table-striped">
-          <thead class="thead-dark">
-              <tr>
-                  <th scope="col">Unit ID</th>
-                  <th scope="col">Model ID</th>
-                  <th scope="col">Weight</th>
-                  <th scope="col">Status</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor='let unitIn of productUnitsOfPurchase'>
-                  <td>{{unitIn.id}}</td>
-                  <td>{{unitIn.model_id}}</td>
-                  <td>{{unitIn.weight}}</td>
-                  <td>{{unitIn.status}}</td>                
-              </tr>
-          </tbody>
-      </table>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-12 text-center">
-      <br>
-      <p>
-        <strong>Installment Details</strong>
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <table class="table table-striped">
-          <thead class="thead-dark">
-              <tr>
-                  <th scope="col">Installment ID</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Amount</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor='let installmentIn of installmentsOfPurchase'>
-                  <td>{{installmentIn.id}}</td>
-                  <td>{{installmentIn.purchase_time_and_date}}</td>
-                  <td>{{installmentIn.payment_amount}}</td>          
-              </tr>
-          </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="newInstallmentModal.show()" mdbWavesEffect>Pay Installment</button>
-    </div>
-  </div>
-  <div class="row">
-      <div mdbModal #newInstallmentModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mynewInstallmentModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <form id="newcustomer-form" (ngSubmit)="addNewPayment(f)" #f="ngForm">
-                <div class="modal-header">
-                  <button type="button" class="close pull-right" aria-label="Close" (click)="newInstallmentModal.hide()">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                  <h4 class="modal-title w-100" id="myModalLabel">Add New Installment</h4>
-                </div>
-                <div class="modal-body">
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <div class="md-form">
-                              <input mdbInputDirective type="text" name="payment_amount" class="form-control" ngModel>
-                              <label for="form1" class="">Installment Amount</label>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <div class="md-form" *ngIf='this.paymentType == "100_per_spot_payment"' >
-                              <input mdbInputDirective type="text" name="gold_price_during_payment" class="form-control" ngModel>
-                              <label for="form1" class="">Payment Gold Price</label>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="newInstallmentModal.hide()" mdbWavesEffect>Close</button>
-                  <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)="newInstallmentModal.hide()" mdbWavesEffect>Save changes</button>
-                </div>
-              </form>
-            </div>
-          </div>
+            </p>
         </div>
-  </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <p>
+                <strong>Total of Purchase:</strong>
+                <span class="grey-text">
+          {{purchaseObjIn.total_cash}}
+        </span>
+            </p>
+            <p>
+                <strong>Total Cash Paid:</strong>
+                <span class="light-blue-text lead">
+          - {{purchaseObjIn.paid_cash}}
+        </span>
+            </p>
+            <p>
+                <strong>Total Cash Balace :</strong>
+                <span [className]=" purchaseObjIn.pending_cash_balance < 1 ? 'lead green-text' : 'lead red-text'">
+          {{purchaseObjIn.pending_cash_balance}}
+        </span>
+            </p>
+
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 text-center">
+            <br>
+            <p>
+                <strong>Installment Details</strong>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Installment ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let installmentIn of installmentsOfPurchase'>
+                        <td>{{installmentIn.id}}</td>
+                        <td>{{installmentIn.purchase_time_and_date}}</td>
+                        <td>{{installmentIn.payment_amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="newInstallmentModal.show()" mdbWavesEffect>Pay Installment</button>
+        </div>
+    </div>
+    <div class="row">
+        <div mdbModal #newInstallmentModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mynewInstallmentModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="newcustomer-form" (ngSubmit)="addNewPayment(f)" #f="ngForm">
+                        <div class="modal-header">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="newInstallmentModal.hide()">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title w-100" id="myModalLabel">Add New Installment</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="md-form">
+                                        <input mdbInputDirective type="text" name="payment_amount" class="form-control" ngModel>
+                                        <label for="form1" class="">Installment Amount</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="md-form" *ngIf='this.paymentType == "100_per_spot_payment"'>
+                                        <input mdbInputDirective type="text" name="gold_price_during_payment" class="form-control" ngModel>
+                                        <label for="form1" class="">Payment Gold Price</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="newInstallmentModal.hide()" mdbWavesEffect>Close</button>
+                            <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)="newInstallmentModal.hide()" mdbWavesEffect>Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>
+                <strong>Product Units Details</strong>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Unit ID</th>
+                        <th scope="col">Model ID</th>
+                        <th scope="col">Weight</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let unitIn of productUnitsOfPurchase'>
+                        <td>{{unitIn.id}}</td>
+                        <td>{{unitIn.model_id}}</td>
+                        <td>{{unitIn.weight}}</td>
+                        <td>{{unitIn.status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

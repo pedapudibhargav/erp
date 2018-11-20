@@ -66,4 +66,11 @@ export class PurchasesService {
      }
      return totalWeight;
    }
+
+   getPurchaseTotal(idIn:string){
+    var purchaseTotal = 0;
+    var purchaseObj:Purchase = this.getPurchaseById(idIn);
+    purchaseTotal = (((purchaseObj.total_weight/92)*purchaseObj.wastage) + purchaseObj.total_weight) * purchaseObj.purchasetime_gold_value;
+    return Number(purchaseTotal.toFixed(2));
+   }
 }

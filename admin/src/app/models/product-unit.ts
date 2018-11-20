@@ -1,3 +1,5 @@
+import { LocalstorageConverterService } from "app/services/localstorage-converter.service";
+
 export class ProductUnit {
     public id: string;
     public model_id: string;
@@ -8,7 +10,8 @@ export class ProductUnit {
     public gross_profit: number;
 
     constructor(id: string, model_id: string, weight: number){
-        this.id= id;
+        var localStorageServ = new LocalstorageConverterService;
+        this.id= "PUNIT" + localStorageServ.getJsonObjectByKey("product_units").length;
         this.model_id= model_id;
         this.weight= weight;
         this.status= "in_stock";

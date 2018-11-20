@@ -22,7 +22,7 @@ export class NewProductUnitComponent implements OnInit {
         this.localStorageConverter.setJsonObjectToKey("product_units",[]);
       }
       let productUnitsFromStorage: [any] =  this.localStorageConverter.getJsonObjectByKey("product_units");
-      newProductUnit["id"] = "u"+productUnitsFromStorage.length;
+      newProductUnit["id"] = "PUNIT"+productUnitsFromStorage.length;
       newProductUnit["status"] = "in_stock";
       newProductUnit["selling_price"] = 0;
       newProductUnit["purchase_price"] = 0;

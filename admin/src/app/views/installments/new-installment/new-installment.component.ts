@@ -83,21 +83,19 @@ export class NewInstallmentComponent implements OnInit {
     var totalOfPurchase = 0;
     var paymentObj = this.purchaseObjIn;
     var totalWeightOfPurchase =  this.purchaseService.getPurchaseWeightTotal(paymentObj.id);
+    var wastageCost= ((totalWeightOfPurchase/92) * Number(paymentObj.wastage)).toFixed(2);
     console.log("Inside Update Balance:" + paymentObj.payment_type);
-    if(paymentObj.payment_type == "100_per_spot_payment"){
-      totalOfPurchase = totalWeightOfPurchase * paymentObj.purchasetime_gold_value;
-      console.log("TotalOfPurchase:" + totalOfPurchase);
+    if(totalOfPurchase < 1){
+      totalOfPurchase = this.purchaseService.getPurchaseTotal(paymentObj.id);
     }
-
     for(var i=0; i < this.installmentsOfPurchase.length; i++){
       totalFromPayments = Number(totalFromPayments) + Number(this.installmentsOfPurchase[i].payment_amount);
     }
 
-    paymentObj.pending_cash_balance = totalOfPurchase - totalFromPayments;
+    paymentObj.pending_cash_balance = Number((totalOfPurchase - totalFromPayments).toFixed(2));
     paymentObj.total_cash = totalOfPurchase;
     paymentObj.total_weight = totalWeightOfPurchase;
     paymentObj.paid_cash = totalFromPayments;
     this.purchaseService.updatePurchase(paymentObj);
   }
-
 }
