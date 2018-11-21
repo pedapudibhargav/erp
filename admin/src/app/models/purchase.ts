@@ -10,6 +10,7 @@ export class Purchase {
     public purchasetime_gold_value: number;
     public last_date_of_payement: Date;
     public total_weight: number;
+    public total_weight_with_wastage: number;
     public total_cash: number;
     public pending_cash_balance: number;
     public pending_weight_balance: number;
@@ -46,6 +47,7 @@ export class Purchase {
         this.total_weight= total_weight
         this.total_cash= total_cash
         this.pending_cash_balance = pending_cash_balance;
+        this.total_weight_with_wastage = Number((total_weight + ((total_weight/92)*wastage)).toFixed(2));
         this.pending_weight_balance = Number((total_weight + ((total_weight/92)*wastage)).toFixed(2));
         // console.log("Total Weight:" + total_weight + ", Wastage:" + wastage);
         // console.log("Pending weight Balance:" + this.pending_weight_balance);

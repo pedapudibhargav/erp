@@ -80,6 +80,7 @@ export class NewInstallmentComponent implements OnInit {
 
   updateBalaceForPurchase(){
     var totalFromPayments = 0;
+    var totalWeightPayments = 0;
     var totalOfPurchase = 0;
     var paymentObj = this.purchaseObjIn;
     var totalWeightOfPurchase =  this.purchaseService.getPurchaseWeightTotal(paymentObj.id);
@@ -90,12 +91,15 @@ export class NewInstallmentComponent implements OnInit {
     }
     for(var i=0; i < this.installmentsOfPurchase.length; i++){
       totalFromPayments = Number(totalFromPayments) + Number(this.installmentsOfPurchase[i].payment_amount);
+      totalWeightPayments +=  this.installmentsOfPurchase[i].gold_payment;
     }
 
     paymentObj.pending_cash_balance = Number((totalOfPurchase - totalFromPayments).toFixed(2));
     paymentObj.total_cash = totalOfPurchase;
-    paymentObj.total_weight = totalWeightOfPurchase;
+    paymentObj.total_weight = Number(totalWeightOfPurchase.toFixed(2));
     paymentObj.paid_cash = totalFromPayments;
+    paymentObj.pending_weight_balance = Number(Number(paymentObj.total_weight_with_wastage -  totalWeightPayments).toFixed(2));
+    console.log("Payment Obj:", paymentObj);
     this.purchaseService.updatePurchase(paymentObj);
   }
 }

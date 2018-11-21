@@ -7,6 +7,7 @@ export class Installment {
     public gold_price_during_payment: number;
     public localStorageService: LocalstorageConverterService;
     public purchase_time_and_date: Date;
+    public gold_payment: number;
 
 
     constructor(id:string, purchase_id : string, payment_amount:number, gold_price_during_payment:number){
@@ -15,5 +16,7 @@ export class Installment {
         this.payment_amount = payment_amount;
         this.gold_price_during_payment = gold_price_during_payment;
         this.purchase_time_and_date = new Date();
+        this.gold_payment = Number( Number((1/gold_price_during_payment)*payment_amount).toFixed(2));
+
     }
 }

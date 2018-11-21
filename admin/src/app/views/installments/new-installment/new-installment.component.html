@@ -65,7 +65,32 @@
             </p>
         </div>
     </div>
-    <div class="row">
+    <div class="row"*ngIf='this.paymentType != "100_per_spot_payment" && this.paymentType != "fixed_gold_price_installment"'>
+        <div class="col-6">
+            <p>
+              <strong>Total Weight:</strong>
+              <span class="grey-text">
+              {{purchaseObjIn.total_weight}}
+        </span>
+            </p>
+            <p>
+                <strong>Weight Paid:</strong>
+                <span class="light-blue-text lead">
+           {{(purchaseObjIn.total_weight_with_wastage - purchaseObjIn.pending_weight_balance).toFixed(2)}}
+        </span>
+            </p>
+            <p>
+                <strong>Total Weight Balace :</strong>
+                <span [className]=" purchaseObjIn.pending_cash_balance < 1 ? 'lead green-text' : 'lead red-text'">
+          {{purchaseObjIn.pending_weight_balance}}
+        </span>
+            </p>
+
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+    <div class="row"*ngIf='this.paymentType == "100_per_spot_payment" && this.paymentType == "fixed_gold_price_installment"'>
         <div class="col-6">
             <p>
                 <strong>Total of Purchase:</strong>
@@ -137,16 +162,18 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
+                                    <div class="md-form" *ngIf='this.paymentType != "100_per_spot_payment" && this.paymentType != "fixed_gold_price_installment"'>
+                                        <input mdbInputDirective type="text" name="gold_price_during_payment" class="form-control" ngModel>
+                                        <label for="form1" class="">Current Gold Price</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
                                     <div class="md-form">
                                         <input mdbInputDirective type="text" name="payment_amount" class="form-control" ngModel>
                                         <label for="form1" class="">Installment Amount</label>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <div class="md-form" *ngIf='this.paymentType == "100_per_spot_payment"'>
-                                        <input mdbInputDirective type="text" name="gold_price_during_payment" class="form-control" ngModel>
-                                        <label for="form1" class="">Payment Gold Price</label>
                                     </div>
                                 </div>
                             </div>
